@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Pws",
       theme: ThemeData(
+        textTheme:
+            GoogleFonts.merriweatherTextTheme(Theme.of(context).textTheme),
         primarySwatch: primaryBlack,
         primaryColor: Colors.black,
       ),
