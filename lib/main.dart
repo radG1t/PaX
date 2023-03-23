@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -83,13 +84,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+//ui
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey,
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.fromLTRB(35, 35, 35, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -123,29 +125,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               const SizedBox(
-                height: 12,
+                height: 48,
               ),
-              //change btn
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    minimumSize: const Size(double.infinity, 50),
-                  ),
-                  onPressed: _isReplacing ? null : _replaceText,
-                  child: _isReplacing
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 3,
+              //pax btn
+              Padding(
+                padding: const EdgeInsets.fromLTRB(180, 0, 180, 0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      minimumSize: const Size(double.infinity, 65),
+                    ),
+                    onPressed: _isReplacing ? null : _replaceText,
+                    child: _isReplacing
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                            ),
+                          )
+                        : Text(
+                            'do the Pax',
+                            style: GoogleFonts.merriweather(fontSize: 20),
                           ),
-                        )
-                      : const Text(
-                          'Replace',
-                          style: TextStyle(),
-                        ),
+                  ),
                 ),
               ),
             ],
