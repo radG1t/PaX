@@ -162,3 +162,4 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 // responsive / copy final text / show keys / clear all 
 // file jadid ezafe beshe, braye btn,ui,etc ..
+// for test commit.
