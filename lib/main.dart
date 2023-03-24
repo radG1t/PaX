@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: Colors.grey,
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(35, 35, 35, 16),
+          padding: const EdgeInsets.fromLTRB(85, 75, 85, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -103,10 +103,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: 'Enter the text here',
                   border: OutlineInputBorder(),
                 ),
-                maxLines: 8,
+                maxLines: 10,
               ),
               const SizedBox(
-                height: 12,
+                height: 16,
               ),
               TextField(
                 controller: searchController,
@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               const SizedBox(
-                height: 12,
+                height: 16,
               ),
               TextField(
                 controller: replaceController,
@@ -126,33 +126,31 @@ class _MyHomePageState extends State<MyHomePage> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(
-                height: 48,
-              ),
+              const SizedBox(height: 48),
+              // const SizedBox(height: 0.4 * double.infinity),
               //pax btn
-              Padding(
-                padding: const EdgeInsets.fromLTRB(180, 0, 180, 0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      minimumSize: const Size(double.infinity, 65),
-                    ),
-                    onPressed: _isReplacing ? null : _replaceText,
-                    child: _isReplacing
-                        ? const SizedBox(
-                            height: 20,
-                            width: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 3,
-                            ),
-                          )
-                        : Text(
-                            'do the Pax',
-                            style: GoogleFonts.merriweather(fontSize: 20),
-                          ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    maximumSize: const Size(140, 65),
+                    fixedSize: const Size(50, 65),
+                    minimumSize: const Size(50, 65),
+                    backgroundColor: Colors.black,
                   ),
+                  onPressed: _isReplacing ? null : _replaceText,
+                  child: _isReplacing
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3,
+                          ),
+                        )
+                      : Text(
+                          'do the Pax',
+                          style: GoogleFonts.merriweather(fontSize: 20),
+                        ),
                 ),
               ),
             ],
@@ -162,5 +160,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-// rang ro trancparency kon bere kolan . yani kadr haro sefid kon ama kam rang kon
-//just for test
+// responsive / copy final text / show keys / clear all 
+// file jadid ezafe beshe, braye btn,ui,etc ..
