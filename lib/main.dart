@@ -26,33 +26,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Pws",
+      title: "Pax",
       theme: ThemeData(
         textTheme:
             GoogleFonts.merriweatherTextTheme(Theme.of(context).textTheme),
         primarySwatch: primaryBlack,
         primaryColor: Colors.black,
       ),
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class HomePage extends StatefulWidget {
+  const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePage createState() => _HomePage();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePage extends State<HomePage> {
   final textController = TextEditingController();
   final searchController = TextEditingController();
   final replaceController = TextEditingController();
 
   bool _isReplacing = false;
+  // these 2 lines are for clear all btn
+  String replacedText = '';
+  Map<String, String> replaceMap = {};
 
   @override
   void dispose() {
@@ -127,6 +130,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               const SizedBox(height: 48),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    replacedText = '';
+                    replaceMap.clear();
+                    textController.clear();
+                  });
+                },
+                child: const Text('Clear all'),
+              ),
+
+              const SizedBox(height: 48),
               // const SizedBox(height: 0.4 * double.infinity),
               //pax btn
               ClipRRect(
@@ -160,5 +175,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-// responsive / copy final text / show keys / clear all 
+// responsive / copy final text / show keys / clear all
 // file jadid ezafe beshe, braye btn,ui,etc ..
