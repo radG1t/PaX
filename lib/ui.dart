@@ -1,6 +1,7 @@
 //ui
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pax/btn.dart';
 
 class HomeUi extends StatefulWidget {
   const HomeUi({super.key});
@@ -17,6 +18,7 @@ class _HomeUiState extends State<HomeUi> {
   // these 2 lines are for clear all btn
   String replacedText = '';
   Map<String, String> replaceMap = {};
+  @override
   void dispose() {
     // Clean up the controllers when the widget is disposed.
     textController.dispose();
@@ -88,43 +90,19 @@ class _HomeUiState extends State<HomeUi> {
                 ),
               ),
               const SizedBox(height: 48),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    replacedText = '';
-                    replaceMap.clear();
-                    textController.clear();
-                  });
-                },
-                child: const Text('Clear all'),
-              ),
 
               const SizedBox(height: 48),
               // const SizedBox(height: 0.4 * double.infinity),
-              //pax btn
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    maximumSize: const Size(140, 65),
-                    fixedSize: const Size(50, 65),
-                    minimumSize: const Size(50, 65),
-                    backgroundColor: Colors.black,
-                  ),
-                  onPressed: _isReplacing ? null : _replaceText,
-                  child: _isReplacing
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 3,
-                          ),
-                        )
-                      : Text(
-                          'do the Pax',
-                          style: GoogleFonts.merriweather(fontSize: 20),
-                        ),
-                ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  ClearBtn(),
+                  SizedBox(
+                    width: 10,
+                  )
+                  //    PaxBtn(),
+                ],
               ),
             ],
           ),
