@@ -1,6 +1,5 @@
 //ui
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pax/btn.dart';
 
 class HomeUi extends StatefulWidget {
@@ -100,8 +99,8 @@ class _HomeUiState extends State<HomeUi> {
                   ClearBtn(),
                   SizedBox(
                     width: 10,
-                  )
-                  //    PaxBtn(),
+                  ),
+                  PaxBtn(),
                 ],
               ),
             ],
