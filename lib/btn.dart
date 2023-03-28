@@ -21,12 +21,12 @@ class _ClearBtnState extends State<ClearBtn> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          //  maximumSize: const Size(100, 100),
-          fixedSize: const Size(160, 65),
-          //     minimumSize: const Size(100, 100),
-          backgroundColor: Colors.black87,
-        ),
+        // style: ElevatedButton.styleFrom(
+        //   //  maximumSize: const Size(100, 100),
+        //   fixedSize: const Size(160, 65),
+        //   //     minimumSize: const Size(100, 100),
+        //   backgroundColor: Colors.black87,
+        // ),
         onPressed: () {
           setState(() {
             replacedText = '';
@@ -36,7 +36,7 @@ class _ClearBtnState extends State<ClearBtn> {
         },
         child: Text(
           'Clear all',
-          style: GoogleFonts.merriweather(fontSize: 20),
+          // style: GoogleFonts.merriweather(fontSize: 20),
         ),
       ),
     );
@@ -120,4 +120,11 @@ class _PaxBtnState extends State<PaxBtn> {
       ),
     );
   }
+}
+
+Widget LogBtn() {
+  return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child:
+          ElevatedButton(onPressed: () {}, child: const Text('    Log    ')));
 }

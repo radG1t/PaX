@@ -95,12 +95,20 @@ class _HomeUiState extends State<HomeUi> {
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  ClearBtn(),
-                  SizedBox(
+                children: [
+                  Column(
+                    children: [
+                      LogBtn(),
+                      const SizedBox(
+                        height: 7,
+                      ),
+                      const ClearBtn(),
+                    ],
+                  ),
+                  const SizedBox(
                     width: 10,
                   ),
-                  PaxBtn(),
+                  const PaxBtn(),
                 ],
               ),
             ],
