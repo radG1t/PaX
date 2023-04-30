@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pax/home.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp()); // inja ro bayad homepage bzarim
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -33,133 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: primaryBlack,
         primaryColor: Colors.black,
       ),
-      home: const MyHomePage(),
+      home: const Home(),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final textController = TextEditingController();
-  final searchController = TextEditingController();
-  final replaceController = TextEditingController();
-
-  bool _isReplacing = false;
-
-  @override
-  void dispose() {
-    // Clean up the controllers when the widget is disposed.
-    textController.dispose();
-    searchController.dispose();
-    replaceController.dispose();
-    super.dispose();
-  }
-
-  void _replaceText() {
-    final String text = textController.text;
-    final String search = searchController.text;
-    final String replace = replaceController.text;
-
-    if (text.isEmpty || search.isEmpty || replace.isEmpty) {
-      return;
-    }
-
-    setState(() {
-      _isReplacing = true;
-    });
-
-    final String newText = text.replaceAll(search, replace);
-
-    Future.delayed(const Duration(milliseconds: 400), () {
-      setState(() {
-        textController.text = newText;
-        _isReplacing = false;
-      });
-    });
-  }
-
-//ui
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey,
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(85, 75, 85, 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextField(
-                controller: textController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter the text here',
-                  border: OutlineInputBorder(),
-                ),
-                maxLines: 10,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              TextField(
-                controller: searchController,
-                decoration: const InputDecoration(
-                  labelText: 'Which character do you want to replace?',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              TextField(
-                controller: replaceController,
-                decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(),
-                  labelText: 'Which character do you want to replace it with?',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 48),
-              // const SizedBox(height: 0.4 * double.infinity),
-              //pax btn
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    maximumSize: const Size(140, 65),
-                    fixedSize: const Size(50, 65),
-                    minimumSize: const Size(50, 65),
-                    backgroundColor: Colors.black,
-                  ),
-                  onPressed: _isReplacing ? null : _replaceText,
-                  child: _isReplacing
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 3,
-                          ),
-                        )
-                      : Text(
-                          'Pax',
-                          style: GoogleFonts.merriweather(fontSize: 20),
-                        ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-// responsive / copy final text / show keys / clear all 
-// file hae ui && btn hazf mishan , new file maznim b jash with new stuff . 
-////fuck that. main ro copy mikonim kolan roye main e onnvar
