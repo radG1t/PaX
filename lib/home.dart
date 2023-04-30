@@ -112,7 +112,7 @@ class _HomeState extends State<Home> {
                     child: TextField(
                       controller: searchController,
                       decoration: const InputDecoration(
-                        hintText: 'Search',
+                        hintText: 'replace this ..',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                     child: TextField(
                       controller: replaceController,
                       decoration: const InputDecoration(
-                        hintText: 'Replace',
+                        hintText: 'with this ..',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -142,12 +142,17 @@ class _HomeState extends State<Home> {
                     onPressed: _undo,
                     child: const Text('dePax'),
                   ),
+                  FloatingActionButton(
+                    onPressed: _reset,
+                    child: const Text('reset'),
+                  ),
                 ],
               ),
             ],
           ),
         ),
         bottomNavigationBar: BottomAppBar(
+          color: Colors.grey,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
