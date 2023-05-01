@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: Colors.grey,
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(85, 75, 85, 0),
+          padding: const EdgeInsets.fromLTRB(55, 30, 55, 0),
           child: Column(
             children: [
               TextField(
@@ -137,14 +137,15 @@ class _HomeState extends State<Home> {
                     onPressed: _replaceText,
                     child: const Text('Pax'),
                   ),
-                  const SizedBox(width: 6),
+                  const SizedBox(width: 2),
                   FloatingActionButton(
                     onPressed: _undo,
                     child: const Text('dePax'),
                   ),
+                  const SizedBox(width: 2),
                   FloatingActionButton(
                     onPressed: _reset,
-                    child: const Text('reset'),
+                    child: const Text('etc'), // share-copy-reset
                   ),
                 ],
               ),
