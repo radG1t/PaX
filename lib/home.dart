@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -19,8 +18,6 @@ class _HomeState extends State<Home> {
   String previousSearch = '';
   String previousReplace = '';
 
-  bool _isReplacing = false;
-
   @override
   void initState() {
     super.initState();
@@ -38,7 +35,7 @@ class _HomeState extends State<Home> {
     super.dispose();
   }
 
-  void _replaceText() {
+  void _pax() {
     final String text = textController.text;
     final String search = searchController.text;
     final String replace = replaceController.text;
@@ -47,9 +44,7 @@ class _HomeState extends State<Home> {
       return;
     }
 
-    setState(() {
-      _isReplacing = true;
-    });
+    setState(() {});
 
     final String newText = text.replaceAll(search, replace);
     previousText = text;
@@ -59,12 +54,11 @@ class _HomeState extends State<Home> {
     Future.delayed(const Duration(milliseconds: 400), () {
       setState(() {
         textController.text = newText;
-        _isReplacing = false;
       });
     });
   }
 
-  void _undo() {
+  void _dePax() {
     setState(() {
       textController.text = previousText;
       searchController.text = previousSearch;
@@ -133,37 +127,64 @@ class _HomeState extends State<Home> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FloatingActionButton(
-                    onPressed: _replaceText,
-                    child: const Text('Pax'),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: GestureDetector(
+                      onTap: () => _pax(),
+                      child: Container(
+                        width: 50,
+                        height: 35,
+                        color: Colors.black38,
+                        child: const Center(child: Text('PaX')),
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 2),
-                  FloatingActionButton(
-                    onPressed: _undo,
-                    child: const Text('dePax'),
+                  const SizedBox(width: 6),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: GestureDetector(
+                      onTap: () => _dePax(),
+                      child: Container(
+                        width: 50,
+                        height: 35,
+                        color: Colors.black38,
+                        child: const Center(child: Text('dePax')),
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 2),
-                  FloatingActionButton(
-                    onPressed: _reset,
-                    child: const Text('etc'), // share-copy-reset
+                  const SizedBox(width: 6),
+                  DropdownButton<String>(
+                    focusColor: Colors.red,
+                    onChanged: (String? value) {
+                      if (value == 'copy') {
+                        // handle copy option
+                      } else if (value == 'share') {
+                        // handle share option
+                      } else if (value == 'reset') {
+                        _reset();
+                      } else if (value == 'info') {}
+                    },
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'copy',
+                        child: Text('Copy'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'share',
+                        child: Text('Share'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'reset',
+                        child: Text('Reset'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'info',
+                        child: Text('Info'),
+                      ),
+                    ],
+                    hint: const Text('etc'),
                   ),
                 ],
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.grey,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.settings),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(Icons.info_outline),
-                onPressed: () {},
               ),
             ],
           ),
