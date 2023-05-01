@@ -132,7 +132,7 @@ class _HomeState extends State<Home> {
                     child: GestureDetector(
                       onTap: () => _pax(),
                       child: Container(
-                        width: 50,
+                        width: 70,
                         height: 35,
                         color: Colors.black38,
                         child: const Center(child: Text('PaX')),
@@ -145,7 +145,7 @@ class _HomeState extends State<Home> {
                     child: GestureDetector(
                       onTap: () => _dePax(),
                       child: Container(
-                        width: 50,
+                        width: 70,
                         height: 35,
                         color: Colors.black38,
                         child: const Center(child: Text('dePax')),
@@ -153,37 +153,121 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   const SizedBox(width: 6),
-                  DropdownButton<String>(
-                    focusColor: Colors.red,
-                    onChanged: (String? value) {
-                      if (value == 'copy') {
-                        // handle copy option
-                      } else if (value == 'share') {
-                        // handle share option
-                      } else if (value == 'reset') {
-                        _reset();
-                      } else if (value == 'info') {}
-                    },
-                    items: const [
-                      DropdownMenuItem(
-                        value: 'copy',
-                        child: Text('Copy'),
+                  GestureDetector(
+                    onTap: () => _dePax(),
+                    child: Container(
+                      width: 70,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.black38,
                       ),
-                      DropdownMenuItem(
-                        value: 'share',
-                        child: Text('Share'),
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: DropdownButton<String>(
+                              underline: Container(color: Colors.transparent),
+                              borderRadius: BorderRadius.circular(12),
+                              isExpanded: false,
+                              onChanged: (String? value) {
+                                if (value == 'copy') {
+                                  // handle copy option
+                                } else if (value == 'share') {
+                                  // handle share option
+                                } else if (value == 'reset') {
+                                  _reset();
+                                } else if (value == '') {}
+                              },
+                              items: const [
+                                DropdownMenuItem(
+                                  value: 'copy',
+                                  child: Center(
+                                    child: Text(
+                                      'Copy',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'share',
+                                  child: Center(
+                                    child: Text(
+                                      'Share',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'reset',
+                                  child: Center(
+                                    child: Text(
+                                      'Reset',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ),
+                                ),
+                                DropdownMenuItem(
+                                  value: 'PFM',
+                                  child: Center(
+                                    child: Text(
+                                      'Pizza For Me',
+                                      style: TextStyle(fontSize: 7),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                              hint: const Text(''),
+                              focusColor: Colors.grey,
+                              dropdownColor: Colors.grey,
+                            ),
+                          ),
+                          const Positioned.fill(
+                            child: Center(
+                              child: Text(
+                                'etc',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      DropdownMenuItem(
-                        value: 'reset',
-                        child: Text('Reset'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'info',
-                        child: Text('Info'),
-                      ),
-                    ],
-                    hint: const Text('etc'),
+                    ),
                   ),
+
+                  /*  DropdownButton<String>(
+                          onChanged: (String? value) {
+                            if (value == 'copy') {
+                              // handle copy option
+                            } else if (value == 'share') {
+                              // handle share option
+                            } else if (value == 'reset') {
+                              _reset();
+                            } else if (value == 'info') {}
+                          },
+                          items: const [
+                            DropdownMenuItem(
+                              value: 'copy',
+                              child: Text('Copy'),
+                            ),
+                            DropdownMenuItem(
+                              value: 'share',
+                              child: Text('Share'),
+                            ),
+                            DropdownMenuItem(
+                              value: 'reset',
+                              child: Text('Reset'),
+                            ),
+                            DropdownMenuItem(
+                              value: 'info',
+                              child: Text('Info'),
+                            ),
+                          ],
+                          hint: const Text('etc'),
+                          dropdownColor: Colors.grey),
+                           */
                 ],
               ),
             ],
