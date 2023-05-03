@@ -135,7 +135,11 @@ class _HomeState extends State<Home> {
                         width: 70,
                         height: 35,
                         color: Colors.black38,
-                        child: const Center(child: Text('PaX')),
+                        child: const Center(
+                            child: Text('PaX',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold))),
                       ),
                     ),
                   ),
@@ -148,7 +152,12 @@ class _HomeState extends State<Home> {
                         width: 70,
                         height: 35,
                         color: Colors.black38,
-                        child: const Center(child: Text('dePax')),
+                        child: const Center(
+                            child: Text(
+                          'dePax',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        )),
                       ),
                     ),
                   ),
@@ -226,6 +235,7 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 'etc',
                                 style: TextStyle(
+                                  color: Colors.black,
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                 ),
