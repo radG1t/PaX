@@ -95,9 +95,10 @@ class _HomeState extends State<Home> {
                 controller: textController,
                 minLines: 15,
                 maxLines: 100,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Enter your text here',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
                 ),
               ),
               const SizedBox(height: 16),
@@ -106,9 +107,10 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: TextField(
                       controller: searchController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'replace this ..',
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ),
@@ -116,9 +118,10 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: TextField(
                       controller: replaceController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'with this ..',
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ),
@@ -166,91 +169,83 @@ class _HomeState extends State<Home> {
                   GestureDetector(
                     onTap: () => _dePax(),
                     child: Container(
-                      width: 70,
+                      width: 71,
                       height: 35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.black38,
                       ),
-                      child: Stack(
-                        children: [
-                          Positioned.fill(
-                            child: DropdownButton<String>(
-                              underline: Container(color: Colors.transparent),
-                              borderRadius: BorderRadius.circular(12),
-                              isExpanded: false,
-                              onChanged: (String? value) {
-                                if (value == 'copy') {
-                                  Clipboard.setData(
-                                      ClipboardData(text: textController.text));
-                                } else if (value == 'share') {
-                                  // handle share option
-                                } else if (value == 'reset') {
-                                  _reset();
-                                } else if (value == '') {}
-                              },
-                              items: [
-                                const DropdownMenuItem(
-                                  value: 'copy',
-                                  child: Center(
-                                    child: Text(
-                                      'Copy',
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                  ),
-                                ),
-                                const DropdownMenuItem(
-                                  value: 'share',
-                                  child: Center(
-                                    child: Text(
-                                      'Share',
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                  ),
-                                ),
-                                const DropdownMenuItem(
-                                  value: 'reset',
-                                  child: Center(
-                                    child: Text(
-                                      'Reset',
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                  ),
-                                ),
-                                DropdownMenuItem(
-                                  value: 'Daramet',
-                                  child: Center(
-                                    child: Image.asset(
-                                      color: Colors.white,
-                                      "assets/pizza.png",
-                                      width: 30,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              hint: const Text(''),
-                              focusColor: Colors.grey,
-                              dropdownColor: Colors.grey,
-                            ),
-                          ),
-                          const Positioned.fill(
+                      child: DropdownButton<String>(
+                        underline: Container(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(12),
+                        isExpanded: false,
+                        onChanged: (String? value) {
+                          if (value == 'copy') {
+                            Clipboard.setData(
+                                ClipboardData(text: textController.text));
+                          } else if (value == 'reset') {
+                            _reset();
+                          } else if (value == 'twitter') {
+                          } else if (value == 'pizza') {}
+                        },
+                        items: [
+                          const DropdownMenuItem(
+                            value: 'copy',
                             child: Center(
                               child: Text(
-                                'etc',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                'Copy',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                          const DropdownMenuItem(
+                            value: 'reset',
+                            child: Center(
+                              child: Text(
+                                'Reset',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: 'twitter',
+                            child: Center(
+                              child: Image.asset(
+                                color: Colors.white,
+                                "assets/twitter.png",
+                                width: 28,
+                              ),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: 'pizza',
+                            child: Center(
+                              child: Image.asset(
+                                color: Colors.white,
+                                "assets/pizza.png",
+                                width: 28,
                               ),
                             ),
                           ),
                         ],
+                        hint: const Center(
+                            child: Text(
+                          '      etc',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
+                        focusColor: Colors.grey,
+                        dropdownColor: Colors.grey,
                       ),
                     ),
                   ),
                 ],
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+              const Text('درود :D \n مرسی که از ابزار پکسورد استفاده کردی'),
             ],
           ),
         ),
