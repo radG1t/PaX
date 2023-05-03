@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -18,6 +19,7 @@ class _HomeState extends State<Home> {
   String previousText = '';
   String previousSearch = '';
   String previousReplace = '';
+  final Uri _url = Uri.parse('https://daramet.com/supportradin');
 
   @override
   void initState() {
@@ -127,7 +129,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -185,8 +187,13 @@ class _HomeState extends State<Home> {
                                 ClipboardData(text: textController.text));
                           } else if (value == 'reset') {
                             _reset();
-                          } else if (value == 'twitter') {
-                          } else if (value == 'pizza') {}
+                          }
+                          //else if (value == 'twitter') {   }
+                          else if (value == 'pizza') {
+                            GestureDetector(
+                              onTap: () => _launchUrl,
+                            );
+                          }
                         },
                         items: [
                           const DropdownMenuItem(
@@ -207,7 +214,7 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          DropdownMenuItem(
+                          /* DropdownMenuItem(
                             value: 'twitter',
                             child: Center(
                               child: Image.asset(
@@ -216,7 +223,7 @@ class _HomeState extends State<Home> {
                                 width: 28,
                               ),
                             ),
-                          ),
+                          ),*/
                           DropdownMenuItem(
                             value: 'pizza',
                             child: Center(
@@ -251,5 +258,11 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }

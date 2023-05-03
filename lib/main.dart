@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pax/home.dart';
 
-void main() => runApp(MyApp()); // inja ro bayad homepage bzarim
+void main() => runApp(const MyApp()); // inja ro bayad homepage bzarim
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   MaterialColor primaryBlack = const MaterialColor(
     0xFF000000,
     <int, Color>{
