@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -180,15 +181,16 @@ class _HomeState extends State<Home> {
                               isExpanded: false,
                               onChanged: (String? value) {
                                 if (value == 'copy') {
-                                  // handle copy option
+                                  Clipboard.setData(
+                                      ClipboardData(text: textController.text));
                                 } else if (value == 'share') {
                                   // handle share option
                                 } else if (value == 'reset') {
                                   _reset();
                                 } else if (value == '') {}
                               },
-                              items: const [
-                                DropdownMenuItem(
+                              items: [
+                                const DropdownMenuItem(
                                   value: 'copy',
                                   child: Center(
                                     child: Text(
@@ -197,7 +199,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                 ),
-                                DropdownMenuItem(
+                                const DropdownMenuItem(
                                   value: 'share',
                                   child: Center(
                                     child: Text(
@@ -206,7 +208,7 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                 ),
-                                DropdownMenuItem(
+                                const DropdownMenuItem(
                                   value: 'reset',
                                   child: Center(
                                     child: Text(
@@ -216,11 +218,12 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 DropdownMenuItem(
-                                  value: 'PFM',
+                                  value: 'Daramet',
                                   child: Center(
-                                    child: Text(
-                                      'Pizza For Me',
-                                      style: TextStyle(fontSize: 7),
+                                    child: Image.asset(
+                                      color: Colors.white,
+                                      "assets/pizza.png",
+                                      width: 30,
                                     ),
                                   ),
                                 ),
@@ -246,38 +249,6 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-
-                  /*  DropdownButton<String>(
-                          onChanged: (String? value) {
-                            if (value == 'copy') {
-                              // handle copy option
-                            } else if (value == 'share') {
-                              // handle share option
-                            } else if (value == 'reset') {
-                              _reset();
-                            } else if (value == 'info') {}
-                          },
-                          items: const [
-                            DropdownMenuItem(
-                              value: 'copy',
-                              child: Text('Copy'),
-                            ),
-                            DropdownMenuItem(
-                              value: 'share',
-                              child: Text('Share'),
-                            ),
-                            DropdownMenuItem(
-                              value: 'reset',
-                              child: Text('Reset'),
-                            ),
-                            DropdownMenuItem(
-                              value: 'info',
-                              child: Text('Info'),
-                            ),
-                          ],
-                          hint: const Text('etc'),
-                          dropdownColor: Colors.grey),
-                           */
                 ],
               ),
             ],
