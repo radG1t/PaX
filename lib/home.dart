@@ -252,7 +252,10 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-              const Text('درود :D \n مرسی که از ابزار پکسورد استفاده کردی'),
+              const Text(
+                'درود :D \n مرسی که از ابزار پکسورد استفاده کردی',
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
         ),
