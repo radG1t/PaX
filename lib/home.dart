@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
   String previousText = '';
   String previousSearch = '';
   String previousReplace = '';
-  final Uri _url = Uri.parse('https://daramet.com/supportradin');
 
   @override
   void initState() {
@@ -156,7 +155,11 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                const RandomMenuDivider(),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                const ShiftMenuDivider(),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -217,14 +220,10 @@ class _HomeState extends State<Home> {
                               _reset();
                             }
                             //else if (value == 'twitter') {   }
-                            else if (value == 'pizza') {
-                              GestureDetector(onTap: () {
-                                _launchUrl;
-                              });
-                            }
+                            else if (value == 'log') {}
                           },
-                          items: [
-                            const DropdownMenuItem(
+                          items: const [
+                            DropdownMenuItem(
                               value: 'copy',
                               child: Center(
                                 child: Text(
@@ -233,7 +232,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             ),
-                            const DropdownMenuItem(
+                            DropdownMenuItem(
                               value: 'reset',
                               child: Center(
                                 child: Text(
@@ -242,26 +241,11 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                             ),
-                            /* DropdownMenuItem(
-                              value: 'twitter',
-                              child: Center(
-                                child: Image.asset(
-                                  color: Colors.white,
-                                  "assets/twitter.png",
-                                  width: 28,
-                                ),
-                              ),
-                            ),*/
                             DropdownMenuItem(
-                              value: 'pizza',
-                              child: Center(
-                                child: Image.asset(
-                                  color: Colors.white,
-                                  "assets/pizza.png",
-                                  width: 28,
-                                ),
-                              ),
-                            ),
+                                value: 'log',
+                                child: Center(
+                                  child: Text('Log'),
+                                )),
                           ],
                           hint: const Center(
                               child: Text(
@@ -280,7 +264,6 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                const MenuDivider(),
                 const Text(
                   'درود :D \n مرسی که از ابزار پکسورد استفاده کردی',
                   textAlign: TextAlign.center,
@@ -291,11 +274,5 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
-  }
-
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw Exception('Could not launch $_url');
-    }
   }
 }
