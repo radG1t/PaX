@@ -190,9 +190,9 @@ class _HomeState extends State<Home> {
                           }
                           //else if (value == 'twitter') {   }
                           else if (value == 'pizza') {
-                            GestureDetector(
-                              onTap: () => _launchUrl,
-                            );
+                            GestureDetector(onTap: () {
+                              _launchUrl;
+                            });
                           }
                         },
                         items: [
