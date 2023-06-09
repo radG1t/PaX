@@ -72,6 +72,7 @@ class _RandomMenuDividerState extends State<RandomMenuDivider> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // add delete off check box
               const Text('Random'),
               Icon(_menuOpen ? Icons.arrow_drop_up : Icons.arrow_drop_down),
             ],

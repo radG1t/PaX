@@ -1,7 +1,8 @@
+// my code
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pax/tools.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -215,7 +216,7 @@ class _HomeState extends State<Home> {
                           onChanged: (String? value) {
                             if (value == 'copy') {
                               Clipboard.setData(
-                                  ClipboardData(text: textController.text));
+                                  ClipboardData(text: resultController.text));
                             } else if (value == 'reset') {
                               _reset();
                             }
