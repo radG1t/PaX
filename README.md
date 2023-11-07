@@ -2,4 +2,4 @@
  (this app was kind of a childhood dream.)
 
 
-## i Will change this file later.
+## I Will change this file later.
